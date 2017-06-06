@@ -7,7 +7,9 @@ import (
 	"net/http"
 )
 
-// set up Payload struct 
+// set up Payload struct
+// Data include Fruits , Vegetables
+// set as map
 type Payload struct {
 	Stuff Data
 }
@@ -19,6 +21,7 @@ type Data struct {
 
 type Fruits map[string]int
 type Vegetables map[string]int
+// end set Payload struct 
 
 func main() {
 	url := "http://localhost:1337"
