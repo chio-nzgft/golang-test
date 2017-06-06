@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// set up Payload struct 
 type Payload struct {
 	Stuff Data
 }
