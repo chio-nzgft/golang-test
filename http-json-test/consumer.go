@@ -23,7 +23,10 @@ type Fruits map[string]int
 type Vegetables map[string]int
 // end set Payload struct 
 
+
+// mian 
 func main() {
+ // get & close web connect
 	url := "http://localhost:1337"
 	res, err := http.Get(url)
 	if err != nil {
@@ -31,11 +34,13 @@ func main() {
 	}
 	defer res.Body.Close()
 
+ // get body info
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		panic(err)
 	}
 
+ // json.Unmarshal to Payload map
 	var p Payload
 
 	err = json.Unmarshal(body, &p)
@@ -43,5 +48,6 @@ func main() {
 		panic(err)
 	}
 
+  // print out Payload map
 	fmt.Println(p.Stuff.Fruit, "\n", p.Stuff.Veggies)
 }
