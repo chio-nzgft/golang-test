@@ -6,6 +6,9 @@ import (
 	"net/http"
 )
 
+// set up Payload struct
+// Data include Fruits , Vegetables
+// set as map
 type Payload struct {
 	Stuff Data
 }
@@ -17,7 +20,10 @@ type Data struct {
 
 type Fruits map[string]int
 type Vegetables map[string]int
+// end set Payload struct 
 
+
+// 
 func serveRest(w http.ResponseWriter, r *http.Request) {
 	response, err := getJsonResponse()
 	if err != nil {
@@ -28,10 +34,13 @@ func serveRest(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// Http HandleFunc from serveRest func
 	http.HandleFunc("/", serveRest)
+	// publish http
 	http.ListenAndServe("localhost:1337", nil)
 }
 
+//Json data info
 func getJsonResponse() ([]byte, error) {
 	fruits := make(map[string]int)
 	fruits["Apples"] = 25
